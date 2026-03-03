@@ -31,7 +31,12 @@ class UserController extends Controller
   redirect('resources');
   }
 
-    public function show(string $id) { }
+    public function show(string $id) {
+          $user = DB::table('users')->where('id', $id)->first();
+
+          return view('singleUser', compact('user'));
+
+     }
 
     public function edit(string $id) { }
 
