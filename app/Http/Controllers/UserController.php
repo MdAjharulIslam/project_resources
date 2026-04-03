@@ -38,9 +38,21 @@ class UserController extends Controller
 
      }
 
-    public function edit(string $id) { }
+  
 
-    public function update(Request $request, string $id) { }
+    public function edit($id)
+{
+    $user = DB::table('users')->where('id', $id)->first();
+    return view('edit', compact('user'));
+}
+     
+
+    public function update(Request $request, string $id) { 
+
+    DB::table('users')->where('id',$id)->update([
+        'name'=>$request->name]
+    );
+    }
 
     public function destroy(string $id) { }
 }
